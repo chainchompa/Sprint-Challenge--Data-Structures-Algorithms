@@ -13,7 +13,17 @@ class BinarySearchTree:
         self.right.depth_first_for_each(cb)
 
   def breadth_first_for_each(self, cb):
-    pass
+    # Add root node to queue. Loop over the queue and remove from the queue. If node has left children then add to queue. If node has right
+    # child then add to queue. Invoke the cb function.
+    queue = [self]
+
+    while queue:
+        node = queue.pop(0)
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+        cb(node.value)
 
   def insert(self, value):
     new_tree = BinarySearchTree(value)
