@@ -1,11 +1,21 @@
 def heapsort(arr):
- pass 
- 
+ # Initialize our heap and initialize a list for the sorted heap. Loop over the array and invert elements into the heap
+ # Loop over the array a second time and delete elements from the heap while putting those deleted elements into the sorted list.
+ # Return the list.
+  heap = Heap()
+  sorted = []
 
+  for element in arr:
+      heap.insert(element)
+  for element in arr:
+      sorted.insert(0, heap.delete())
+
+  return sorted
+ 
 class Heap:
   def __init__(self):
     self.storage = []
-    
+
   def insert(self, value):
     self.storage.append(value)
     self._bubble_up(len(self.storage) - 1)
@@ -15,7 +25,7 @@ class Heap:
     self.storage[0] = self.storage[len(self.storage) - 1]
     self.storage.pop()
     self._sift_down(0)
-    return retval 
+    return retval
 
   def get_max(self):
     return self.storage[0]
