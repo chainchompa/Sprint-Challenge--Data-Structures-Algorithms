@@ -5,7 +5,12 @@ class BinarySearchTree:
     self.right = None
 
   def depth_first_for_each(self, cb):
-    pass    
+    # Call the cb function on the current node. Check if there is a left child then call function. Check if there is a right child then call function.
+    cb(self.value)
+    if self.left:
+        self.left.depth_first_for_each(cb)
+    if self.right:
+        self.right.depth_first_for_each(cb)
 
   def breadth_first_for_each(self, cb):
     pass
